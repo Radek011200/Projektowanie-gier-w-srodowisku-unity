@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
-public class MoveCube : MonoBehaviour
+public class MoveCubeZad2 : MonoBehaviour
 {
     public float speed = 10.0f;
     private float distance;
