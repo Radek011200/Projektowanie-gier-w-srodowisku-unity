@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -24,13 +25,14 @@ public class LookAround : MonoBehaviour
         // pobieramy wartoœci dla obu osi ruchu myszy
         float mouseXMove = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
         float mouseYMove = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+        
         limit += mouseYMove;
-        if (limit is < 90 and > -90)
-        {
-            
-            transform.Rotate(new Vector3(-mouseYMove, 0f, 0f), Space.Self);
+        
+        limit = Math.Clamp(limit, -90.0f, 90.0f);
 
-        }
+        if (limit is < 90 and > -90)
+            transform.Rotate(new Vector3(-mouseYMove, 0f, 0f), Space.Self);
+        
 
         // wykonujemy rotacjê wokó³ osi Y
 
@@ -39,7 +41,7 @@ public class LookAround : MonoBehaviour
 
         // a dla osi X obracamy kamerê dla lokalnych koordynatów
         // -mouseYMove aby unikn¹æ ofektu mouse inverse
-        transform.Rotate(new Vector3(-mouseYMove, 0f, 0f), Space.Self);
+        //transform.Rotate(new Vector3(-mouseYMove, 0f, 0f), Space.Self);
 
 
     }
