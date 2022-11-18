@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveWithCharacterController : MonoBehaviour
+public class Lab6MoveWithCharacterController : MonoBehaviour
 {
     private CharacterController controller;
     private Vector3 playerVelocity;
@@ -48,13 +48,12 @@ public class MoveWithCharacterController : MonoBehaviour
         {
             return;
         }
-        
-        if (hit.gameObject.name == "Trampoline")
+
+        if (hit.moveDirection.y < -0.3)
         {
-            playerVelocity.y += Mathf.Sqrt(3*jumpHeight * -3.0f * gravityValue);
-            playerVelocity.y += gravityValue * Time.deltaTime;
-            controller.Move(playerVelocity * Time.deltaTime);
+            return;
         }
+        
         Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
 
 
